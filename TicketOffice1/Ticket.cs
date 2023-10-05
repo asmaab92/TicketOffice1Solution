@@ -21,8 +21,8 @@ namespace TicketOffice1
             this.Age = age;
             this.Place = place;
 
-            ticket.TicketNumberGenerator();
-            this.Number = 0;
+           
+            this.Number = TicketOffice.TicketNumberGenerator();
 
             
         }

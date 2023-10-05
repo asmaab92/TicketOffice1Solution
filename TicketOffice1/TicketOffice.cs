@@ -23,7 +23,7 @@ namespace TicketOffice1
         
 
        
-        public int TicketNumberGenerator()
+        public static int TicketNumberGenerator()
         {
             var random = new Random();
             int number = random.Next(0, 8000);
