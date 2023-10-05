@@ -9,7 +9,7 @@ namespace TicketOffice1
     {
         static void Main(string[] args)
         {
-            TicketOffice ticket = new TicketOffice();
+            Ticket ticket = new Ticket();
             int price = 0;
            
             Console.WriteLine("Enter your age please.");
@@ -23,12 +23,12 @@ namespace TicketOffice1
             {
                 case "Seated":
                     ticket.Place = PlacePreference.Seated;
-                    price = ticket.PriceSetter();
+                    price = ticket.Price();
                     break;
 
                 case "Standing":
                     ticket.Place = PlacePreference.Standing;
-                    price = ticket.PriceSetter();
+                    price = ticket.Price();
                     break;
 
                 default:
@@ -36,8 +36,8 @@ namespace TicketOffice1
                     break;
             }
 
-            ticket.TaxCalculator(price);
-            ticket.TicketNumberGenerator();
+            ticket.Tax();
+            
         }
 
     }
