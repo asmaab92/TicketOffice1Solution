@@ -11,6 +11,8 @@ namespace TicketOffice1
        public int Age {  get; set; }
        public PlacePreference Place {  get; set; }
 
+        
+
         public TicketOffice()
         {
         }
@@ -19,17 +21,12 @@ namespace TicketOffice1
         {
             Age = age;
             Place = place;
+            
         }
         
 
        
-        public static int TicketNumberGenerator()
-        {
-            var random = new Random();
-            int number = random.Next(0, 8000);
-            Console.WriteLine("The ticket number is: {0} ", number);
-            return number;
-        }
+        
     }
 
 }

@@ -4,27 +4,29 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace TicketOffice1
 {
     public class Ticket
     {
-        public Ticket() 
+        public Ticket()
         {
         }
         public int Age { get; set; }
         public PlacePreference Place { get; set; }
         public int Number { get; set; }
-
+        public int ticketPrice { get; set; }
+        public TicketSalesManager SalesManager { get; set; }
         public Ticket(int age, PlacePreference place)
         {
             this.Age = age;
             this.Place = place;
 
-           
-            this.Number = TicketOffice.TicketNumberGenerator();
+            this.Number = TicketSalesManager.TicketNumberGenerator();
 
-            
+            Ticket ticketPrice = new Ticket(); // Create an instance of Ticket Class
+            ticketPrice.Price();
         }
 
         public int Price()
@@ -59,7 +61,7 @@ namespace TicketOffice1
             {
                 price = 60;
             }
-            Console.WriteLine("The price of the ticket is: " + price + "SEK");
+
 
             return price;
         }
@@ -70,6 +72,28 @@ namespace TicketOffice1
             decimal tax = Convert.ToDecimal(1 - 1 / 1.06) * price;
             Console.WriteLine("The paid tax is: " + tax + "SEK");
             return tax;
+        }
+
+        public override string ToString()
+        {
+            return "Age: " + Age + "   Place: " + Place + "   Ticket Number:  " + Number + "    Ticket Price:   " + ticketPrice;
+
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            Ticket objAsTicket = obj as Ticket;
+            if (objAsTicket == null) return false;
+            else return Equals(objAsTicket);
+        }
+        public override int GetHashCode()
+        {
+            return Number;
+        }
+        public bool Equals(Ticket other)
+        {
+            if (other == null) return false;
+            return (this.Number.Equals(other.Number));
         }
     }
 }
